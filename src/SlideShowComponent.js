@@ -27,7 +27,7 @@ const SlideShowComponent = () => {
         const timer = setTimeout(() => {
             setCurrentImageIndex((prevIndex) => {
                 if ((prevIndex + 1) % images.length === 0) {
-                    prevIndex++;
+                    return (prevIndex + 2) % images.length;
                 }
                 return (prevIndex + 1) % images.length;
             });
@@ -36,11 +36,11 @@ const SlideShowComponent = () => {
             const interval = setInterval(() => {
                 setCurrentImageIndex((prevIndex) => {
                     if ((prevIndex + 1) % images.length === 0) {
-                        return 0;
+                        return (prevIndex + 2) % images.length;
                     }
                     return (prevIndex + 1) % images.length;
                 });
-            }, 4000);
+            }, 3800);
 
             // 컴포넌트 언마운트 시 interval 정리
             return () => clearInterval(interval);
